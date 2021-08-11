@@ -1,0 +1,6 @@
+* When we overload(compile-time polymorphism) any constructor then we have to write default constructor by own else we get compile-time error 
+  whereas, when we don't overload any constructor then compiler by default initialize the constructor.
+* Overriding should be done in inheritance scenario(parent-child relationship) means same method signature but with different implementation.
+* Constructor doesn't have return type whereas, method has to define the return type.
+* By using abstract class and interface we can implement abstraction.
+* Static keyword makes variable, method as class level things means same copy is being shared by everyone in that class. 

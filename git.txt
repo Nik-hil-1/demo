@@ -1,0 +1,74 @@
+ S.No.   COMMAND                                    WHAT IT DO
+------  ---------                                  ------------
+
+ 1.      git init                               --       It initializes an empty git repository for our project.
+ 2.      git add                                --       It staged our untracked work in git and that work is ready to commit.
+ 3.      git commit                             --       It confirms that the untracked work is finally saved.
+ 4.      git rm -r --cached <file-name>         --       It deletes unused file from git repository.
+ 5.      git status                             --       It tells which file is tracked, untracked or commit.
+ 6.      git branch                             --       It gives the list of branch.
+ 7.      git branch <name>                      --       It creates a new branch.
+ 8.      git checkout <branch name>             --       It moves/switches head to a specific branch.
+ 9.      git checkout <commit sha1>             --       It moves/switches head to specific commit.   (Note:- sha1 is basically the id provided by git to every commit.)
+10.      git branch -d <name>                   --       It deletes on merge branch with -d option.
+11.      git branch -m <old name of branch>     --       It changes the branch name.
+         <new branch name>
+12.      git checkout -b <branch name>          --       It creates a new branch and move the HEAD to the new branch.
+13.      git update-git-for-windows             --       It updates the git version.
+14.      git config --global user.name"--"      --       It configs the global username as specified in double colon.
+15.      git config --global user.email"--"     --       It configs the global user email as specified in double colon.
+16.      git config user.name/user.email"--"    --       It configs the user email/username as specified in double colon.
+17.      git config --global --list             --       It gives the list of all the attributes of global config of git.
+18.      git merge <branch-name>                --       It merges the branch to the master. This command should be run from master branch.
+19.      git branch -D <name>                   --       It forcefully deletes the branch.
+20.      git rebase master                      --       It copies the latest commit changes from the master branch to the branch from where it is being called.
+21.      git rebase --continue                  --       It makes the latest copied changes from master the base and then put the branch-two's new changes on the top of the 
+                                                         stack at branch from where it is being called.
+22.      git stash save                         --       It saves the uncommitted changes to a temporary location and keep the tree clean.
+23.      git stash pop                          --       It applies those uncommitted changes to the branch from where it is being called and delete the changes from temporary location.
+24.      git stash apply                        --       It applies those uncommitted changes to the branch from where it is being called and but don't delete the changes from temporary location.
+25.      git cherry-pick <commit-id>            --       It helps in copying a specific commit from one branch to another.
+26.      git tag v1.0.0                         --       It creates a sealed label/tag (where we can't make changes) with name v1.0.0.
+27.      git reset -- soft <commit-id>          --       It will squashes all the comiit id ahead of the chosen commit id into one i.e, chosen commit id.
+28.      git diff                               --       It shows the difference in changes in the current working directory and the repository.
+29.      git remote show                        --       It shows the remote repository origin name.
+30.      git remote add <alias-name>'ssh-key'   --       It creates link between remote and local repository with alias name.
+31.      git push <remote-main-branch-name>     --       It keeps remote repository in the sync with local one.
+32.      git pull <remote-main-branch-name>     --       It keeps local repository in the sync with remote repository.
+33.      git push <remoteMainBranch> :<deleted  --       It keeps in sync with remote repository when any branch is deleted from local repository.
+                               BranchName>
+34.      git push <remote-main-branch-name>     --       It pushes the locally new created branch to remote repository to make both in sync.
+                 <new-branch-name>
+35.      git lfs install                        --       It installs the locking file system which provide you exclusiveness on any file.
+                                                         (means, if you are working on any file then that file can't be accessed by other person until you unlock the file) 
+
+Important Points:-
+--------------------
+
+* There are 4 types of objects in git:-
+  a) Blob - Whatever we write or add is in the form of blob object.
+  b) Tree - These blob objects are arranged in tree formation or collection of blobs.
+  c) Commit - When we done with our work and finally want to save the work then we use commit.
+  d) Annotated tag - It tells about the details of the last commit.
+
+* There are 3 types of merge:
+  a) Fast forward merge - It applied when there is no commits in the destination branch from the time source branch was cut and before the merge command is issued.
+  b) 3 way merge - It applied when there are commit in the destination branch between the creation of source branch and merging the source 
+  c) Rebase - It is the mostly used merge approach because it keeps linear workflow as well as all the conflicts are resolved on the branch so that master branch would stay clean.
+              In rebasing, first we merge branch-one to master as a fast-forward merge then we use "git rebase master" command from branch-two which copied the last merge changes to branch-two
+              and keep branch-two changes at separate temporary area(remember that now the head is moved to branch-two) and the conflicts are resolved at branch-two and then commit done.
+              Now, we use "git rebase --continue" which successfully rebased our branch-two on top of the stack of branch-two over branch-one then checkout to master and use "git merge branch-two".
+              Both the branches are merged using rebase. 
+
+* Stash is basically helps in those scenario where we write code at wrong place and we have to copy those new code and paste it to the right location rather rewriting the code.
+
+* Cherry-pick is basically helps in merging only a specific commit from another branch to master rather than merging all the commit of another branch. It works by the value not by the reference.
+
+* Tags are similar to branches but it is immutable and natural fit for the release. It works as a checkpoints pointing to a specific commit id and acts as a label to refer to it.
+  Usually, tags are named with the versions for integrating with the CI/CD build pipelines.
+
+* Reset is used to rewrite/rearrange the commit log. It basically squash all the ahead commits from where we choose the commit id into one but doesn't affect the changes in the repository.
+
+
+
+
